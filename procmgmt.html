@@ -1,0 +1,119 @@
+<html>
+<head>
+<script>
+	function exec(cmd,ta)
+	{
+		var str=document.getElementById("connection").innerHTML;
+		if(str=='Not Connected')
+		{
+			alert('Not Connected to Lab');
+		}
+		else
+		{
+			theUrl='http://localhost:8082/runCommand?cmd='+encodeURIComponent(cmd)
+			var xmlHttp = new XMLHttpRequest();
+			xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+			xmlHttp.send( null );
+			var op= xmlHttp.responseText;
+			document.getElementById(ta).value=op;
+			document.getElementById(ta).style.display = 'block';
+		}
+	}
+</script>
+
+<script>
+	function loadDoc() 
+	{
+		const xhttp = new XMLHttpRequest();
+		xhttp.onload = function() {
+			document.getElementById("connection").innerHTML = this.responseText;
+		    }
+		xhttp.open("GET", 'http://localhost:8082/checkconn', true);
+		xhttp.send();
+		xhttp.onerror= function(){document.getElementById("connection").innerHTML="Not Connected"};
+	}
+	
+	setInterval(function(){
+			
+			loadDoc();},1000);
+</script>
+
+<style>
+textarea{
+	display: none;
+}
+
+.lab{
+	background-color: #4CAF50;
+	border-radius: 25px;
+        color: white;
+        padding: 5px 5px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+}
+
+</style>
+</head>
+<body>
+<H3 id='connection'>Not Connected</H3>
+
+<div>
+	<button  class='lab' onClick="exec('ps -ef','a1');"> Run Command ps -ef </button>
+	<textarea id="a1" name="output" rows="50" cols="100" readonly></textarea>
+</div>
+
+<div>
+	<button  class='lab' onClick="exec('ls -l /proc','a2');"> Run Command ls -l /proc </button>
+	<textarea id="a2" name="output" rows="50" cols="100" readonly></textarea>
+</div>
+
+<div>
+	<button class='lab' onClick="exec('tree /proc','a3');"> Run Command tree /proc </button>
+	<textarea id="a3" name="output" rows="50" cols="100" readonly></textarea>
+</div>
+
+<div class='lab'>
+	<p>Run Command
+		<button onClick="killcmd();"> kill &nbsp;</button>
+		<select name='flg' id='flg'>
+			<option value='none'> </option>
+			<option value='KILL'>-KILL</option>
+			<option value='TSTP'>-TSTP</option>
+			<option value='CONT'>-CONT</option>
+		</select>
+		<input type='number' id='pid' placeholder='PID' size="6">
+	</p>
+	<script>
+	function killcmd()
+	{
+		var cmd='kill ';
+		var flag=document.getElementById("flg").value;
+		if (flag != 'none')
+		{
+			cmd=cmd+'-'+flag+' '
+		}
+		cmd=cmd+document.getElementById("pid").value;
+		console.log(cmd)
+		exec(cmd,'');
+	}
+	</script>
+</div>
+
+<div>
+	<button class='lab' onClick="exec('uptime','a4');"> Run Command uptime </button>
+	<textarea id="a4" name="output" rows="2" cols="100" readonly></textarea>
+</div>
+
+<div>
+	<button class='lab' onClick="exec('lsof','a5');"> Run Command lsof </button>
+	<textarea id="a5" name="output" rows="50" cols="100" readonly></textarea>
+</div>
+
+</body>
+</html>
+
+
