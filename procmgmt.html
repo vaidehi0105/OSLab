@@ -38,6 +38,14 @@
 			loadDoc();},1000);
 </script>
 
+<script>
+	function toClipboard()
+	{
+		navigator.clipboard.writeText('wget https://adityamitra5102.github.io/OSLab/process_management_backend/lab_backend.sh && sudo chmod +x lab_backend.sh && ./lab_backend.sh ');
+		alert('Copied to clipboard');
+	}
+</script>
+
 <style>
 textarea{
 	display: none;
@@ -117,14 +125,16 @@ A backend is needed to for using the lab. Please follow the instructions to init
 <li><b>If you are on Ubuntu or a Debian based distro:</b><br>
 
 Open the terminal (Ctrl+Alt+T is a keyboard shortcut) and enter the following:<br><br>
- wget https://adityamitra5102.github.io/OSLab/process_management_backend/lab_backend.sh && sudo chmod +x lab_backend.sh && ./lab_backend.sh <br><br>
-Enter sudo password if prompted.</li>
+ wget https://adityamitra5102.github.io/OSLab/process_management_backend/lab_backend.sh && sudo chmod +x lab_backend.sh && ./lab_backend.sh <br>
+<button class='lab' onclick='toClipboard();'>Copy to clipboard</button><br>
+Enter sudo password if prompted.</li><br>
 
 <li><b>If you are on Windows 10 or 11:</b><br>
 
 If you have a Ubuntu on WSL installed directly jump to the next step. If not, install Ubuntu on WSL using the guide <a href="https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-10" target="_blank">here</a>.
 Open Ubuntu on WSL and enter the following command.<br><br>
- wget https://adityamitra5102.github.io/OSLab/process_management_backend/lab_backend.sh && sudo chmod +x lab_backend.sh && ./lab_backend.sh </br></li>
+ wget https://adityamitra5102.github.io/OSLab/process_management_backend/lab_backend.sh && sudo chmod +x lab_backend.sh && ./lab_backend.sh </br>
+<button class='lab' onclick='toClipboard();'>Copy to clipboard</button><br></li>
  </ul>
     </p>
   </div>
@@ -306,6 +316,5 @@ The ‘lsof’ command lists open files and what processes are using them.
 
 </body>
 </html>
-
 
 
