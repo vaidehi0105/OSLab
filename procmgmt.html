@@ -242,12 +242,12 @@ file. To view the status of a process, run<br>
 cat /proc/&lt;PID&gt;/status
 </p>
 
-<div class='lab'>
+<div>
+	<div class='lab'>
 	<p>Run Command
 		<button onClick="catproc();"> cat &nbsp;</button> /proc/
 		<input type='number' id='pid' placeholder='PID' size="6"> /status
 	</p>
-	<textarea id="a6" name="output" rows="50" cols="100" readonly></textarea>
 	<script>
 	function catproc()
 	{
@@ -257,8 +257,9 @@ cat /proc/&lt;PID&gt;/status
 		exec(cmd,'a6');
 	}
 	</script>
+	</div>
+	<textarea id="a6" name="output" rows="50" cols="100" readonly></textarea>
 </div>
-
 
 
 
