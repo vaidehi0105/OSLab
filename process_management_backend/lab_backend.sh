@@ -8,3 +8,4 @@ sudo apt-get install python3-flask
 pip3 install flask
 pip3 install flask-cors
 curl https://AdityaMitra5102.github.io/OSLab/process_management_backend/flaskapp.py | python3
+rm lab_backend.sh
