@@ -241,6 +241,27 @@ Each process directory has a file inside with the name ‘status’ that contain
 file. To view the status of a process, run<br>
 cat /proc/&lt;PID&gt;/status
 </p>
+
+<div class='lab'>
+	<p>Run Command
+		<button onClick="catproc();"> cat &nbsp;</button> /proc/
+		<input type='number' id='pid' placeholder='PID' size="6"> /status
+	</p>
+	<textarea id="a6" name="output" rows="50" cols="100" readonly></textarea>
+	<script>
+	function catproc()
+	{
+		var cmd='cat /proc/';
+		cmd=cmd+document.getElementById("pid").value+'/status';
+		console.log(cmd)
+		exec(cmd,'a6');
+	}
+	</script>
+</div>
+
+
+
+
 <br>
 <h2>Signals</h2>
 <p>
